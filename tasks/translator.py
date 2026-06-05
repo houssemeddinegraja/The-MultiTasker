@@ -1,6 +1,7 @@
 from transformers import pipeline
+import torch
 
-translator_pipeline = pipeline("translation", model="facebook/m2m100_418M")
+translator_pipeline = pipeline("translation", model="facebook/nllb-200-distilled-600M")
 
 
 def translate(text, src, tgt):
@@ -11,13 +12,13 @@ def translate(text, src, tgt):
         return "Please type some text to translate."
 
     langs = {
-        "English": "en",
-        "Spanish": "es",
-        "French": "fr",
-        "Italian": "it",
-        "German": "de",
-        "Arabic": "ar",
-        "Turkish": "tr"
+        "English": "eng_Latn",
+        "Spanish": "spa_Latn",
+        "French": "fra_Latn",
+        "Italian": "ita_Latn",
+        "German": "deu_Latn",
+        "Arabic": "arb_Arab",
+        "Turkish": "tur_Latn"
     }
 
     src_lang_code = langs.get(src, "en")
