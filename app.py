@@ -1,6 +1,8 @@
 import gradio as gr
 from tasks.translator import translate
 from tasks.summarizer import summarize
+from tasks.qna import answer
+
 
 with gr.Blocks(theme=gr.themes.Glass()) as block:
     with gr.Tabs():
@@ -97,6 +99,30 @@ with gr.Blocks(theme=gr.themes.Glass()) as block:
                 fn=summarize,
                 inputs=[sum_in, sum_length],
                 outputs=[sum_out]
+            )
+
+        with gr.Tab("Document Q&A"):
+            gr.Markdown("### Document Q&A Engine")
+
+            with gr.Row():
+                with gr.Column(scale=1):
+                    question_input = gr.Textbox(
+                        label="Step 2: Ask a Question",
+                        placeholder="What is the main finding?"
+                    )
+                    submit_btn = gr.Button("Find Answer", variant="primary")
+                with gr.Column(scale=2):
+                    document_input = gr.File(label="Step 1: Upload your Document")
+
+                    answer_output = gr.Textbox(
+                        label="Step 3: Extracted Answer",
+                        interactive=False
+                    )
+
+            submit_btn.click(
+                fn=answer,
+                inputs=[question_input, document_input],
+                outputs=[answer_output]
             )
 
 block.launch()
