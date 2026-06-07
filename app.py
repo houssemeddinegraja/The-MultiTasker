@@ -3,7 +3,6 @@ from tasks.translator import translate
 from tasks.summarizer import summarize
 from tasks.qna import answer
 
-
 with gr.Blocks(theme=gr.themes.Glass()) as block:
     with gr.Tabs():
         with gr.Tab("The Universal Translator"):
@@ -102,7 +101,45 @@ with gr.Blocks(theme=gr.themes.Glass()) as block:
             )
 
         with gr.Tab("Document Q&A"):
-            gr.Markdown("### Document Q&A Engine")
+            gr.Markdown(
+                """
+                <div style="text-align: center; padding: 10px 0;">
+                    <h1 style="color: #4338ca; margin-bottom: 5px;">Document Q&A Engine</h1>
+                    <p style="color: #6b7280; margin-top: 0;">Extract precise, literal facts directly from your documents</p>
+                </div>
+                """
+            )
+
+            gr.HTML(
+                """
+                <div style="background-color: #e0f2fe; border-left: 4px solid #0284c7; padding: 15px; margin-bottom: 20px; border-radius: 4px; font-size: 14px;">
+                    <strong style="color: #0369a1; font-size: 16px;">💡 How this strict Extractive AI works:</strong>
+                    <p style="color: #0c4a6e; margin-top: 5px; margin-bottom: 10px;">
+                        This AI acts like <strong>'Ctrl+F' on steroids</strong>. It will not read between the lines or guess. The exact answer must be grammatically explicit in the text.
+                    </p>
+                    
+                    <strong style="color: #0369a1;">❌ Bad Example (Conversational):</strong>
+                    <div style="background-color: #fca5a5; padding: 8px; border-radius: 4px; margin-bottom: 10px; color: #7f1d1d;">
+                        <em>Document:</em> "Take a whole month to try it out before shipping it back!"<br>
+                        <em>Question:</em> "What is the return window?" ➔ <strong>AI returns Blank (Failed)</strong>
+                    </div>
+
+                    <strong style="color: #0369a1;">✅ Perfect Example (Literal & Factual):</strong>
+                    <div style="background-color: #bbf7d0; padding: 8px; border-radius: 4px; margin-bottom: 15px; color: #14532d;">
+                        <em>Document:</em> "The standard return window is 30 days."<br>
+                        <em>Question:</em> "What is the return window?" ➔ <strong>AI returns '30 days' (Success)</strong>
+                    </div>
+
+                    <strong style="color: #0369a1;">📄 Ideal Document Types:</strong>
+                    <ul style="color: #0c4a6e; margin-top: 5px; margin-bottom: 0;">
+                        <li><strong>HR Policies & Employee Handbooks</strong> (e.g., PTO rules, benefits)</li>
+                        <li><strong>Legal Contracts & NDAs</strong> (e.g., penalty clauses, dates)</li>
+                        <li><strong>Technical Manuals & IT Documentations</strong> (e.g., hardware requirements)</li>
+                        <li><strong>Standard Operating Procedures (SOPs)</strong> (e.g., step-by-step instructions)</li>
+                    </ul>
+                </div>
+                """
+            )
 
             with gr.Row():
                 with gr.Column(scale=1):
