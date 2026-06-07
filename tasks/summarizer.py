@@ -1,6 +1,6 @@
 from transformers import pipeline
 
-summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 def summarize(text, dropdown_choice):
     if dropdown_choice == "Short":
