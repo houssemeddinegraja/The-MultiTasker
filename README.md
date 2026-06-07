@@ -67,19 +67,12 @@ NLP-Swiss-Army-Knife/
 - pip
 
 ### Installation
-
+ 
 ```bash
 git clone https://github.com/houssemeddinegraja/NLP-Swiss-Army-Knife.git
 cd NLP-Swiss-Army-Knife
 pip install -r requirements.txt
 ```
-
-> **Note:** A `requirements.txt` is not yet included. At minimum you will need:
-> ```
-> gradio
-> transformers
-> torch
-> ```
 
 ### Running the app
 
